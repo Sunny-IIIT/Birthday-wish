@@ -326,41 +326,82 @@
   <div class="gift-modal" id="gift-modal">
     <div class="gift-modal-card">
       <span class="lightbox-close" id="gift-close">&times;</span>
-      <h2 class="gift-modal-title">Happy Birthday, My Queen! 👑</h2>
-      <p style="color: var(--accent-pink-soft);">Here are your lifetime non-expirable love coupons:</p>
-
-      <div class="cake-wrapper">
-        <span id="birthday-cake" title="Click to blow out candles!" style="cursor: pointer;">🎂</span>
-        <p style="font-size: 0.85rem; color: var(--accent-gold); margin-top: 5px;">(Tap the cake to blow out candles! 🕯️)</p>
+      
+      <div class="unboxed-header">
+        <span class="gift-badge">✨ UNBOXED SURPRISE ✨</span>
+        <h2 class="gift-modal-title">Happy Birthday, Radhika! 👑❤️</h2>
+        <p style="color: var(--accent-rosegold); font-size: 0.95rem;">Tap the cake candles to blow them out &amp; redeem your coupons!</p>
       </div>
+
+      <!-- Interactive Birthday Cake with Real Animated Flames -->
+      <div class="interactive-cake-container" id="interactive-cake">
+        <div class="candles-row">
+          <div class="candle"><div class="flame"></div></div>
+          <div class="candle"><div class="flame"></div></div>
+          <div class="candle"><div class="flame"></div></div>
+          <div class="candle"><div class="flame"></div></div>
+        </div>
+        <div class="cake-body">
+          <div class="cake-top">🎂</div>
+        </div>
+        <p class="cake-hint" id="cake-status">🕯️ Tap the cake to blow out your birthday candles! 🌬️</p>
+      </div>
+
+      <div class="wish-banner" id="wish-banner" style="display: none;">
+        🎉 <strong>WISH GRANTED!</strong> Sunny promises to fulfill your birthday wish today! ❤️
+      </div>
+
+      <!-- Personalized Birthday Message -->
+      <div class="love-promise-box">
+        <p>
+          "To my dearest Radhika: You are the sweetest gift life has ever given me. On your birthday, I promise to give you a lifetime of smiles, adventures, late-night talks, and unconditional love." — <strong>Sunny ❤️</strong>
+        </p>
+      </div>
+
+      <!-- Redeemable Coupons Grid -->
+      <h3 style="color: var(--accent-gold); font-family: var(--font-serif); font-size: 1.3rem; margin: 25px 0 15px 0;">
+        🎟️ Your Lifetime Romantic Coupons
+      </h3>
 
       <div class="coupons-grid">
-        <div class="coupon-card">
-          <div class="coupon-icon">🏔️</div>
+        <div class="coupon-card" onclick="claimCoupon(this)">
+          <div class="coupon-header">
+            <span class="coupon-icon">🛕</span>
+            <span class="claim-badge">TAP TO CLAIM 🎟️</span>
+          </div>
           <div class="coupon-title">Next Trip Voucher</div>
-          <div class="coupon-desc">Redeemable for our next romantic getaway (Mountains or Beach!).</div>
+          <div class="coupon-desc">Redeemable anytime for our next trip to the mountains or beach!</div>
         </div>
 
-        <div class="coupon-card">
-          <div class="coupon-icon">🍦</div>
-          <div class="coupon-title">Midnight Treat Pass</div>
-          <div class="coupon-desc">100% valid for late night ice cream, talks, and endless hugs.</div>
+        <div class="coupon-card" onclick="claimCoupon(this)">
+          <div class="coupon-header">
+            <span class="coupon-icon">🍦</span>
+            <span class="claim-badge">TAP TO CLAIM 🎟️</span>
+          </div>
+          <div class="coupon-title">Midnight Ice-Cream Pass</div>
+          <div class="coupon-desc">100% valid for late night treats, drives, and endless talks.</div>
         </div>
 
-        <div class="coupon-card">
-          <div class="coupon-icon">👑</div>
+        <div class="coupon-card" onclick="claimCoupon(this)">
+          <div class="coupon-header">
+            <span class="coupon-icon">👑</span>
+            <span class="claim-badge">TAP TO CLAIM 🎟️</span>
+          </div>
           <div class="coupon-title">Queen for Life Pass</div>
-          <div class="coupon-desc">Sunny must fulfill any wish requested by Radhika on demand.</div>
+          <div class="coupon-desc">Sunny must grant any wish requested by Radhika on demand.</div>
         </div>
 
-        <div class="coupon-card">
-          <div class="coupon-icon">♾️</div>
-          <div class="coupon-title">Infinite Hugs &amp; Love</div>
-          <div class="coupon-desc">Valid everywhere, every single day, for eternity.</div>
+        <div class="coupon-card" onclick="claimCoupon(this)">
+          <div class="coupon-header">
+            <span class="coupon-icon">♾️</span>
+            <span class="claim-badge">TAP TO CLAIM 🎟️</span>
+          </div>
+          <div class="coupon-title">Infinite Hugs &amp; Kisses</div>
+          <div class="coupon-desc">Valid anywhere, every single day, for eternity.</div>
         </div>
       </div>
 
-      <button class="btn-primary" onclick="document.getElementById('gift-modal').classList.remove('active')">
+      <button class="btn-primary" onclick="document.getElementById('gift-modal').classList.remove('active')" style="margin-top: 15px;">
         Thank You My Love ❤️
       </button>
     </div>

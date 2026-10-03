@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   giftContainer.addEventListener('click', () => {
     giftModal.classList.add('active');
-    // Massive heart explosion
-    for (let i = 0; i < 40; i++) {
+    // Massive heart & confetti explosion
+    for (let i = 0; i < 50; i++) {
       particles.push(new HeartParticle(window.innerWidth / 2, window.innerHeight / 2, true));
     }
   });
@@ -215,14 +215,38 @@ document.addEventListener('DOMContentLoaded', () => {
     giftModal.classList.remove('active');
   });
 
-  // Candle interaction
-  const cake = document.getElementById('birthday-cake');
-  if (cake) {
-    cake.addEventListener('click', () => {
-      cake.innerHTML = '✨🎂✨';
-      alert('Your wish has been sent to the universe for Radhika ❤️');
+  // Candle blowing out interaction
+  const cakeContainer = document.getElementById('interactive-cake');
+  const cakeStatus = document.getElementById('cake-status');
+  const wishBanner = document.getElementById('wish-banner');
+
+  if (cakeContainer) {
+    cakeContainer.addEventListener('click', () => {
+      const flames = cakeContainer.querySelectorAll('.flame');
+      flames.forEach(f => f.classList.add('extinguished'));
+      if (cakeStatus) cakeStatus.innerHTML = '✨ Blow Out Complete! Your wish is on its way to heaven ❤️';
+      if (wishBanner) wishBanner.style.display = 'block';
+
+      // Confetti burst
+      for (let i = 0; i < 30; i++) {
+        particles.push(new HeartParticle(window.innerWidth / 2, window.innerHeight / 2, true));
+      }
     });
   }
+
+  // Global Coupon Claim Function
+  window.claimCoupon = function(card) {
+    card.classList.add('claimed');
+    const badge = card.querySelector('.claim-badge');
+    if (badge) {
+      badge.innerHTML = 'CLAIMED BY RADHIKA ❤️';
+    }
+    // Mini heart burst at coupon position
+    const rect = card.getBoundingClientRect();
+    for (let i = 0; i < 15; i++) {
+      particles.push(new HeartParticle(rect.left + rect.width / 2, rect.top + rect.height / 2, true));
+    }
+  };
 
   // 6. PHOTO GALLERY LIGHTBOX
   const polaroids = document.querySelectorAll('.polaroid-card');

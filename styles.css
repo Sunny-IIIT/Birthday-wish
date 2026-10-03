@@ -825,11 +825,100 @@ body {
   margin-bottom: 10px;
 }
 
-.coupons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+/* Birthday Cake & Candles Animation */
+.interactive-cake-container {
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.interactive-cake-container:hover {
+  transform: scale(1.03);
+  border-color: var(--accent-gold);
+}
+
+.candles-row {
+  display: flex;
   gap: 16px;
-  margin: 30px 0;
+  margin-bottom: -15px;
+  z-index: 5;
+}
+
+.candle {
+  width: 8px;
+  height: 35px;
+  background: linear-gradient(180deg, #fff 0%, #ff4b72 100%);
+  border-radius: 4px;
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, #ffd700 0%, #ff5722 60%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  box-shadow: 0 0 12px #ffd700;
+  animation: flameFlicker 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.9; }
+  100% { transform: translateX(-50%) scale(1.15) rotate(3deg); opacity: 1; box-shadow: 0 0 18px #ff9800; }
+}
+
+.flame.extinguished {
+  animation: none;
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  transition: all 0.5s ease;
+}
+
+.cake-body {
+  font-size: 5rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 20px rgba(255, 59, 104, 0.4));
+}
+
+.cake-hint {
+  font-size: 0.9rem;
+  color: var(--accent-gold);
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.wish-banner {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 59, 104, 0.2) 100%);
+  border: 1px solid var(--accent-gold);
+  border-radius: 16px;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin: 15px 0;
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+.love-promise-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 4px solid var(--accent-rose);
+  padding: 18px 20px;
+  border-radius: 12px;
+  text-align: left;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .coupon-card {
@@ -839,30 +928,50 @@ body {
   border-width: 1px;
   border-color: var(--accent-rosegold);
   border-radius: 16px;
-  padding: 16px;
+  padding: 18px;
   text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.coupon-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 59, 104, 0.1);
+  border-color: var(--accent-gold);
+}
+
+.coupon-card.claimed {
+  background: rgba(37, 211, 102, 0.12);
+  border-color: #25d366;
+  border-style: solid;
+}
+
+.coupon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .coupon-icon {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
+  font-size: 2rem;
 }
 
-.coupon-title {
+.claim-badge {
+  font-size: 0.7rem;
   font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 215, 0, 0.2);
+  color: var(--accent-gold);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.coupon-card.claimed .claim-badge {
+  background: #25d366;
   color: #fff;
-  font-size: 1rem;
-}
-
-.coupon-desc {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Birthday Cake Canvas / Animation */
-.cake-wrapper {
-  margin: 20px 0;
-  font-size: 4rem;
+  border-color: #25d366;
 }
 
 /* --------------------------------------------------------------------------
